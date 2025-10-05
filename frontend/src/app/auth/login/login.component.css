@@ -1,0 +1,133 @@
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-container::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(50, 130, 184, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  top: -250px;
+  right: -250px;
+}
+
+.auth-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  padding: 40px 35px;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px var(--shadow);
+  border: 2px solid var(--secondary-color);
+  text-align: center;
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  z-index: 1;
+}
+
+.auth-card h2 {
+  margin-bottom: 30px;
+  color: var(--accent-color);
+  font-size: 28px;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  margin: 14px 0;
+  padding: 14px 16px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+input::placeholder {
+  color: var(--text-secondary);
+}
+
+input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(113, 180, 203, 0.1);
+  transform: translateY(-1px);
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 16px;
+  background: var(--secondary-color);
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(50, 130, 184, 0.3);
+}
+
+button:hover {
+  background: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(15, 76, 129, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.error {
+  margin-top: 12px;
+  padding: 10px;
+  background: rgba(231, 76, 60, 0.1);
+  border: 1px solid var(--danger-color);
+  border-radius: 8px;
+  color: #fca5a5;
+  font-size: 14px;
+}
+
+.success {
+  margin-top: 12px;
+  padding: 10px;
+  background: rgba(39, 174, 96, 0.1);
+  border: 1px solid var(--success-color);
+  border-radius: 8px;
+  color: #86efac;
+  font-size: 14px;
+}
+
+.signup-link {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.signup-link a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.signup-link a:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
