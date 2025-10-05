@@ -1,0 +1,50 @@
+services:
+  mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: minemind
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_USER: user
+      DB_PASSWORD: password
+      DB_NAME: minemind
+      SECRET_KEY: supersecretkey
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+    restart: always
+
+  frontend:
+    build: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+    restart: always
+    networks:
+      - app-network
+
+# ✅ volumes section must be a mapping, not inline
+volumes:
+  mysql_data:
+
+networks:
+  app-network:
+    driver: bridge
